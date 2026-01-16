@@ -1,0 +1,73 @@
+[
+    {
+        "story": {
+            "id": 1,
+            "Likes": 36,
+            "Timestamp": 1768573353
+                         
+        }
+    },
+    {
+        "story": {
+            "id": 2,
+            "Likes": 123,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "instagram_media": {
+            "id": 3,
+            "Likes": 77,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "instagram_media": {
+            "id": 4,
+            "Likes": 2,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "pin": {
+            "id": 5,
+            "Likes": 20,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "pin": {
+            "id": 6,
+            "Likes": 120,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "pin": {
+            "id": 7,
+            "Likes": 150,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "pin": {
+            "id": 8,
+            "Likes": 0,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "youtube_video": {
+            "id": 9,
+            "Likes": 120,
+            "Timestamp": 1768486953
+        }
+    },
+    {
+        "youtube_video": {
+            "id": 10,
+            "Likes": 100,
+            "Timestamp": 1737037353
+        }
+    }
+]
