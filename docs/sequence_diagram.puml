@@ -1,0 +1,34 @@
+@startuml
+title Traitement d'une requête HTTP
+
+participant "Client" as Client
+participant "HTTP Server" as HttpServer
+participant "Controller" as Controller
+participant "AnalysisService" as ASrv
+participant "Watcher object" as Watcher
+participant "SocialsData object" as Data
+
+Client -> HttpServer : Requests localhost:8080
+HttpServer -> Controller : Forwards the request
+group If [request is on '/analysis' && query contains correctly formated parameters 'duration' and 'dimension']
+    Controller -> ASrv : Start the analysis
+    ASrv -> ASrv : Start a context with timeout for the duration passed by the request
+    ASrv -> ASrv : Get Upfluence stream
+    ASrv -> Watcher : Start Watcher and open a channel to send data
+    loop for each message ending by '\\n'
+        ASrv -> ASrv : Extract the post object from the message
+        ASrv -> Watcher : Send the data to be analysed
+        Watcher -> Watcher : Extract the JSON formated data post object 
+        group If [post type is in "instagram_media, pin, youtube_video, article, tweet, facebook_status"]
+            Watcher -> Data : Unmarshall object into a SocialData object
+            Watcher -> Watcher : Add the SocialData object to the report 
+        end 
+    end
+    ASrv -> ASrv : Context finishes
+    ASrv -> Watcher : Close channel
+    ASrv --> Controller : Return watcher object
+    Controller -> Watcher : Finalizes analysis
+    Watcher --> Controller: Return stored and calculated data
+    Controller --> Server : Return JSON object with JSON formatted data
+end
+Server --> Client : Return HTTP answer
