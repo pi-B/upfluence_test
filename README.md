@@ -75,6 +75,7 @@ The solution can be deployed either directly on the host machine
 
 ```
 (inside the cloned directory)
+go mod download
 go run .
 
 or 
